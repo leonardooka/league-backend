@@ -2,7 +2,7 @@ const Pool = require('pg').Pool;
 
 let pool;
 
-console.log(DB_URL)
+console.log(process.env.DB_URL)
 
 if (process.env.DB_URL) {
     pool = new Pool({
