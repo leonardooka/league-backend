@@ -133,6 +133,8 @@ app.delete("/delete-league", async (req, res) => {
   }
 });
 
-app.listen(5001, () => {
+const PORT = process.env.PORT || 3001;
+
+app.listen(PORT, () => {
   console.log("server has started on port 5001");
 });
