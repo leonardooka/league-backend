@@ -11,7 +11,7 @@ app.use(express.json());
 app.get("/", async (req, res) => {
   try {
     const allLeagues = await pool.query("SELECT * FROM leagues");
-    res.json(allLeagues.rows);
+    return res.json(allLeagues.rows);
   } catch (error) {
     console.error(error.message);
   }
