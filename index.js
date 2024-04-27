@@ -5,18 +5,19 @@ const pool = require("./db");
 const morgan = require("morgan")
 
 app.use(morgan('dev'));
+
+const allowedOrigins = [
+  'https://leaguesimulator.netlify.app'
+];
+
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error('Acess denied by CORS'));
+      callback(new Error('Acesso negado pelo CORS'));
     }
-  }
-}));
-
-app.use(cors({
-  origin: 'https://leaguesimulator.netlify.app/',
+  },
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -151,5 +152,5 @@ app.delete("/delete-league", async (req, res) => {
 const PORT = process.env.PORT || 3001;
 
 app.listen(Number(PORT), () => {
-  console.log("server has started on port 5001");
+  console.log("server has started on port", PORT);
 });
